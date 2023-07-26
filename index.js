@@ -3,6 +3,7 @@ const cors = require("cors")
 const mongoose = require("mongoose")
 const UserRoute = require("./routers/UserRouter")
 const ProductRoute = require("./routers/ProductRoute")
+const OrderRoute = require("./routers/OrderRoute")
 const app = express()
 app.use(express.json())
 app.use(cors())
@@ -15,6 +16,7 @@ mongoose.connect(url)
 
 app.use("/user", UserRoute)
 app.use("/product", ProductRoute)
+app.use("/order", OrderRoute)
 
 let PORT = 8000
 app.listen(PORT, () => {
