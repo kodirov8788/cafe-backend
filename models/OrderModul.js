@@ -1,22 +1,26 @@
 const mongoose = require("mongoose")
 const Order = new mongoose.Schema({
-    orders: [
+    isready: {
+        required: true,
+        type: Boolean
+    },
+    ordernumber: {
+        type: Number,
+        required: true
+    },
+    tablenumber: {
+        type: String,
+        required: true
+    },
+    waitername: {
+        type: String,
+        required: true
+    },
+    order: [
         {
-            tablenumber: {
-                type: Number,
-                required: true
-            },
-            waitername: {
-                type: String,
-                required: true
-            },
-            order: [
-                {
-                    type: Object,
-                    required: true
-                }
-            ]
+            type: Object,
+            required: true
         }
-    ],
+    ]
 })
 module.exports = mongoose.model("Order", Order)
