@@ -2,15 +2,15 @@ const express = require("express")
 const cors = require("cors")
 const mongoose = require("mongoose")
 const UserRoute = require("./routers/UserRouter")
-const ProductRoute = require("./routers/ProductRoute")
 const OrderRoute = require("./routers/OrderRoute")
+require("dotenv").config()
 const app = express()
 app.use(express.json())
 app.use(cors())
 
 
-let url = "mongodb+srv://cafe-app:cafe123@cafe-app-server.gcsks1c.mongodb.net/cafe-app?retryWrites=true&w=majority"
-
+let url = process.env.MONGO_URL
+mongoose.set('strictQuery', true)
 mongoose.connect(url)
     .then(res => console.log("ishladi"))
     .catch(error => console.log("error bor"))
@@ -18,7 +18,6 @@ mongoose.connect(url)
 
 
 app.use("/user", UserRoute)
-app.use("/product", ProductRoute)
 app.use("/order", OrderRoute)
 
 
