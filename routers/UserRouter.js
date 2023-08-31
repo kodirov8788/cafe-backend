@@ -9,7 +9,6 @@ router.get("/get", async (request, response) => {
 
     } catch (error) {
         await response.status(401).send("xato")
-
     }
 })
 
