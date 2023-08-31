@@ -40,6 +40,7 @@ router.delete("/delete/:id", async (req, res) => {
 router.get("/get", async (request, response) => {
     try {
         let data = await Product.find({});
+        data.reverse()
         await response.status(200).send(data);
     } catch (error) {
         await response.status(401).send("xato");

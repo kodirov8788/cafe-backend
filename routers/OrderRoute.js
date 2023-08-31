@@ -38,7 +38,7 @@ router.put("/made/:id", async (req, res) => {
 router.get("/get", async (request, response) => {
     try {
         let data = await Order.find({})
-
+        data.reverse()
         await response.status(200).send(data)
 
     } catch (error) {
