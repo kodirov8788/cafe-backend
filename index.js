@@ -18,7 +18,7 @@ app.use("/user", UserRoute)
 app.use("/order", OrderRoute)
 
 
-let PORT = 8000
+let PORT = 5001
 app.listen(PORT, () => {
     console.log(`bizning  port ${PORT}da ishlamoqda`)
 })
