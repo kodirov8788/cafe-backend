@@ -9,7 +9,7 @@ app.use(express.json())
 app.use(cors())
 
 let url = process.env.MONGO_URL
-mongoose.set('strictQuery', true)
+mongoose.set('strictQuery', false)
 mongoose.connect(url)
     .then(res => console.log("ishladi"))
     .catch(error => console.log("error bor"))

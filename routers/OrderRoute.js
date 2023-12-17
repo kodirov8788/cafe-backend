@@ -23,7 +23,7 @@ router.post("/create", async (req, res) => {
     }
 })
 
-router.put("/made/:id", async (req, res) => {
+router.post("/made/:id", async (req, res) => {
     const orderId = req.params.id;
     const neworder = await Order.findById(orderId);
     neworder.isready = true
@@ -35,27 +35,27 @@ router.put("/made/:id", async (req, res) => {
         res.status(404).send(error)
     })
 })
+
 router.get("/get", async (request, response) => {
     try {
         let data = await Order.find({})
         data.reverse()
-        await response.status(200).send(data)
+        response.status(200).send(data)
 
     } catch (error) {
-        await response.status(401).send("xato")
+        response.status(401).send("xato")
 
     }
 })
-router.delete("/delete/:id", async (req, res) => {
+router.post("/delete/:id", async (req, res) => {
     let orderId = req.params.id
     let deletedOrder = await Order.findByIdAndDelete(orderId)
     res.status(200).send(deletedOrder)
 })
 
-router.put("/update/:id", async (req, res) => {
+router.post("/update/:id", async (req, res) => {
     const orderId = req.params.id;
     const neworder = await Order.findById(orderId);
-
     await neworder.save();
     res.status(200).send(neworder)
 })
